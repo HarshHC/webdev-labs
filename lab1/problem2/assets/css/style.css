@@ -1,0 +1,72 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: rgb(41, 40, 40);
+    color: white;
+}
+
+main{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.createNote {
+    width: 340px;
+    height: 400px;
+    position: absolute;
+    background: #fff;
+    box-shadow: 1px 1px 10px 5px rgba(40, 39, 39, 0.393);
+    border-radius: 20px;
+    margin: 40px;
+    padding: 20px;
+}
+
+.colors {
+    display: flex;
+}
+
+.colorbox {
+    width: 30px;
+    height: 30px;
+    margin: 10px 0;
+    margin-right: 10px;
+    border-radius: 5px;
+    background: #000;
+}
+
+#note {
+    margin: 10px 0;
+    border-radius: 10px;
+    width: 90%;
+    padding: 10px;
+}
+
+#addNote {
+    padding: 10px;
+    border-radius: 10px;
+    color:white;
+    width: 100%;
+    background-color: rgb(110, 110, 215);
+}
+
+.red {
+    background: rgb(209, 123, 123);
+}
+
+.green {
+    background: rgb(129, 232, 129);
+}
+
+.blue {
+    background-color: rgb(78, 138, 184);
+}
+
