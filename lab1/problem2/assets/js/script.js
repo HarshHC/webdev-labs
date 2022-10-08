@@ -52,6 +52,7 @@ addNote.addEventListener("click", () => {
 
   noteTextArea.value = "";
   refreshNotes();
+  editMode = false;
 });
 
 createNoteBtn.addEventListener("click", () => {
