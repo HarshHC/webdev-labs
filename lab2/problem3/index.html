@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>GitHub Clone</title>
+  </head>
+  <body>
+    <h1>GitHub Clone</h1>
+    <form>
+      <input
+        type="search"
+        name="search"
+        id="searchBar"
+        placeholder="Username"
+      />
+      <button type="submit" id="searchBtn">Search</button>
+    </form>
+    <main>
+      <div id="profile">
+        <h2>User Profile</h2>
+        <img src="" id="profilePic" />
+        <p id="name" class="label">Name:</p>
+        <p id="username" class="label">Username:</p>
+        <p id="email" class="label">Email:</p>
+        <p id="location" class="label">Location:</p>
+        <p id="numRepos" class="label">Number of Repos:</p>
+      </div>
+      <div id="repos">
+        <h2>User Repos</h2>
+        <div id="list">
+          <div class="repo">
+            <h3 class="repoName">Repo Name</h3>
+            <p class="repoDesc">Repo description</p>
+          </div>
+        </div>
+        <div class="repo">
+            <h3 class="repoName">Repo Name</h3>
+            <p class="repoDesc">Repo description</p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
