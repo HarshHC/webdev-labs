@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Phone Directory</title>
+  </head>
+  <body>
+    <header>
+      <h1>Phone Directory</h1>
+      <div id="addContact">
+        <form>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="name"
+            required
+          />
+          <input
+            type="tel"
+            name="mobile"
+            id="mobile"
+            placeholder="mobile"
+            pattern="[0-9]{10}"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="email"
+            required
+          />
+          <button type="submit" id="addBtn">Add Contact</button>
+        </form>
+        <div id="error"></div>
+      </div>
+    </header>
+    <main>
+      <p>Search phone numbers:</p>
+      <input type="search" name="search" id="searchBar" placeholder="Search" />
+      <table id="table">
+        <tr>
+          <th onclick="toggleSort()" id="toggleName">Name</th>
+          <th>Mobile</th>
+          <th>Email</th>
+        </tr>
+
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>3204i234</td>
+          <td>test@gmail.com</td>
+        </tr>
+      </table>
+    </main>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
