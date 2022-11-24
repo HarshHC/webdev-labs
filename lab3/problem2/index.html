@@ -6,13 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.1.0/rxjs.umd.js"></script>
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
-    <input type="number" name="hours" id="hour" placeholder="hour" value="1" />
-    <input type="number" name="mins" id="mins" placeholder="mins" value="0" />
-    <input type="number" name="secs" id="secs" placeholder="secs" value="0" />
     <h3 id="result"></h3>
+
+    <div class="inputs">
+      <input type="number" name="hours" id="hour" placeholder="hours" />
+      <input type="number" name="mins" id="mins" placeholder="minutes" />
+      <input type="number" name="secs" id="secs" placeholder="secondss" />
+    </div>
     <button id="startBtn">Start timer</button>
+
     <script src="./assets/js/script.js"></script>
   </body>
 </html>

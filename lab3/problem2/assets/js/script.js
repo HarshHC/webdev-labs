@@ -9,9 +9,9 @@ const result = document.querySelector("#result");
 const startBtn = document.querySelector("#startBtn");
 
 const getStartValue = () => {
-  let hrs = hours.value * 60 * 60;
-  let min = mins.value * 60;
-  let sec = parseInt(secs.value);
+  let hrs = isNaN(hours.value * 60 * 60) ? 0 : hours.value * 60 * 60;
+  let min = isNaN(mins.value * 60) ? 0 : mins.value * 60;
+  let sec = isNaN(parseInt(secs.value)) ? 0 : parseInt(secs.value);
   return hrs + min + sec;
 };
 
@@ -26,13 +26,13 @@ const getTimeFromSeconds = (totalSeconds) => {
 const startObservable = fromEvent(startBtn, "click");
 
 const startTime = getTimeFromSeconds(getStartValue());
-result.innerHTML =
-  startTime.hours +
+result.innerHTML = "Please set the countdown below";
+startTime.hours +
   "h " +
   (startTime.mins == 60 ? 0 : startTime.mins) +
-  " mins " +
+  "m " +
   startTime.seconds +
-  " seconds";
+  "s";
 
 let timerSubscription = null;
 
@@ -49,8 +49,8 @@ const subscription = startObservable.subscribe(() => {
       time.hours +
       "h " +
       (time.mins == 60 ? 0 : time.mins) +
-      " mins " +
+      "m " +
       time.seconds +
-      " seconds";
+      "s";
   });
 });
