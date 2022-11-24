@@ -1,25 +1,18 @@
 const { fromEvent, interval, merge, EMPTY } = rxjs;
-
-const {
-  takeWhile,
-  takeUntil,
-  switchMap,
-  scan,
-  mapTo,
-  startWith,
-  repeat,
-  switchMapTo,
-  take,
-} = rxjs.operators;
+const { take } = rxjs.operators;
 
 const hours = document.querySelector("#hour");
 const mins = document.querySelector("#mins");
+const secs = document.querySelector("#secs");
 const result = document.querySelector("#result");
 
 const startBtn = document.querySelector("#startBtn");
 
 const getStartValue = () => {
-  return hours.value * 60 * 60 + mins.value * 60;
+  let hrs = hours.value * 60 * 60;
+  let min = mins.value * 60;
+  let sec = parseInt(secs.value);
+  return hrs + min + sec;
 };
 
 const getTimeFromSeconds = (totalSeconds) => {
@@ -43,7 +36,6 @@ result.innerHTML =
 
 let timerSubscription = null;
 
-// for now, let's just log the event on each click
 const subscription = startObservable.subscribe(() => {
   if (timerSubscription) timerSubscription.unsubscribe();
 
