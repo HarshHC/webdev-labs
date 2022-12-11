@@ -5,6 +5,8 @@ import Note from "./components/Note";
 
 function App() {
   const [createNoteVisible, setCreateNoteVisible] = useState(false);
+  const [editNote, setEditNote] = useState(null);
+  const [editNoteIndex, setEditNoteIndex] = useState(-1);
   const [notesList, setNotesList] = useState([
     {
       text: "hello",
@@ -14,6 +16,12 @@ function App() {
 
   const addNote = (note) => {
     setNotesList([...notesList, note]);
+  };
+
+  const deleteNote = (index) => {
+    const copy = [...notesList];
+    copy.splice(index, 1);
+    setNotesList(copy);
   };
 
   return (
@@ -30,8 +38,21 @@ function App() {
           </button>
         </nav>
         <div className="notes">
-          {notesList.map((note) => {
-            return <Note text={note.text} color={note.color} />;
+          {notesList.map((note, i) => {
+            return (
+              <Note
+                text={note.text}
+                color={note.color}
+                editNote={() => {
+                  setEditNote(note);
+                  setEditNoteIndex(i);
+                  setCreateNoteVisible(true);
+                }}
+                deleteNote={() => {
+                  deleteNote(i);
+                }}
+              />
+            );
           })}
         </div>
       </main>
@@ -39,6 +60,16 @@ function App() {
       <CreateNotePopup
         visbility={createNoteVisible}
         addNote={addNote}
+        editNote={editNote}
+        updateNote={(newNote) => {
+          if (editNote) {
+            const copy = [...notesList];
+            copy[editNoteIndex] = newNote;
+            setNotesList(copy);
+            setEditNote(null);
+            setEditNoteIndex(-1);
+          }
+        }}
         closePopup={() => {
           setCreateNoteVisible(false);
         }}

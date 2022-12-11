@@ -1,18 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function CreateNotePopup({ visbility, addNote, closePopup }) {
-  const [noteText, setNoteText] = useState("test");
+function CreateNotePopup({
+  visbility,
+  addNote,
+  closePopup,
+  editNote,
+  updateNote,
+}) {
+  const [noteText, setNoteText] = useState("");
   const [noteColor, setNoteColor] = useState(0);
 
   const noteColors = ["red", "blue", "green", "yellow"];
 
+  useEffect(() => {
+    if (editNote) {
+      setNoteColor(noteColors.indexOf(editNote.color));
+      setNoteText(editNote.text);
+    }
+  }, [editNote]);
+
   return (
     <div
       className={`Popup ${noteColors[noteColor]}`}
-      style={{ visibility: visbility ? "visible" : "hidden" }}
+      style={{ display: visbility ? "block" : "none" }}
     >
       <div className="createNoteHeader">
-        <h4>Create a Note</h4>
+        <h2>Create a Note</h2>
         <button
           id="closeBtn"
           onClick={() => {
@@ -35,17 +48,36 @@ function CreateNotePopup({ visbility, addNote, closePopup }) {
           );
         })}
       </div>
-      <textarea name="note" id="note" cols="26" rows="10"></textarea>
+      <textarea
+        name="note"
+        id="noteTextArea"
+        value={noteText}
+        onChange={(e) => {
+          setNoteText(e.target.value);
+        }}
+      ></textarea>
       <button
         id="addNote"
         onClick={() => {
-          addNote({
-            text: noteText,
-            color: noteColors[noteColor],
-          });
+          if (noteText === "") return;
+          if (editNote) {
+            updateNote({
+              text: noteText,
+              color: noteColors[noteColor],
+            });
+          } else {
+            addNote({
+              text: noteText,
+              color: noteColors[noteColor],
+            });
+          }
+
+          setNoteColor(0);
+          setNoteText("");
+          closePopup();
         }}
       >
-        Create
+        {editNote ? "Update" : "Create"}
       </button>
     </div>
   );
